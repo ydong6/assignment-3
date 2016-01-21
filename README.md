@@ -165,7 +165,7 @@ Here is a typical fastq-formatted header from an Illumina sequencer (this is a r
 
 ### Tasks
 
-1. The read number is the first integer value that you see **following the space** in the header.  How would you parse out **only the lane number** from the header above?
+1. The read number is the first integer value that you see **following the space** in the header.  How would you parse out **only the read number** from the header above?
 
   **FIND**:
   ```
