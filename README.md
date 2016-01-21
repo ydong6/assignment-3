@@ -157,7 +157,7 @@ spider,8,0,0
 
 ## Task Group 3
 
-Here is a typical fastq-formatted header from an Illumina sequencer (this is a real header form a real sequencing run).  There's lots of info in these header strings, and you need to parse some of that information out of the header string (which always starts with `@` for fastq data versus `>` for fasta data):
+Here is a typical fastq-formatted header from an Illumina sequencer (this is a real header from a real sequencing run).  There's lots of info in these header strings, and you need to parse some of that information out of the header string (which always starts with `@` for fastq data versus `>` for fasta data):
 
 ```
 @SN1083:466:HA8VPADXX:1:1101:1997:2233 1:N:0:89
