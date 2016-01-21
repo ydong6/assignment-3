@@ -21,22 +21,23 @@ Once you click them, the blue in the boxes (lower right corner) indicates that e
 
 **Alternatively**, you may want to copy the text you are searching/replacing to a new window, and work on each find/replace expression until you get it correct. Once it's correct, paste the correct expression(s) back in this document in the appropriate set of brackets.
 
+If you are interested in how the [regular expression engine](https://en.wikipedia.org/wiki/Comparison_of_regular_expression_engines) is matching your expression (and what you might be missing), you can see the engine at work by using [this nifty gizmo from regex101.com](https://regex101.com/r/rF8pM2/12#javascript).  It also allows you to see how different engines (PCRE, Python) would work using the same expression (you can select the "Flavor" on the far left side).  [Atom](https://atom.io/) uses the `javascript` engine.
+
 ## Example Task 1
 
 Here is a string:
 
 ```
-georgia bulldogs
-
+lsu tigers
 ```
 
 ### Tasks
 
-1. What is the regular expression that you would need to match the word `georgia` in `georgia bulldogs`. Place your answer between the sets of triple apostrophes, below (I have put my answer in the triple-quotes already).
+1. What is the regular expression that you would need to match the word `tigers` in `lsu tigers`. Place your answer between the sets of triple apostrophes, below (I have put my answer in the triple-quotes already).
 
   **FIND**:
   ```
-  (georgia)
+  (tigers)
   ```
 
 ## Task Set 1
@@ -98,12 +99,13 @@ animal,legs,fingers,toes
 human,2,10,10
 dog,4,4,4
 spider,8,0,0
-
 ```
+
+**Note**: I am working under the assumption that spiders do not have toes.
 
 ### Tasks
 
-1. Reverse the order of the columns from 1,2,3,4 (as you see them) to 4,3,2,1.  To do this, you need to both `FIND` some things and `REPLACE` them (or re-arrange them, but you also do that in the `REPLACE` box).  Enter the expression for each operation in the correct position, below:
+1. Reverse the order of the columns from 1,2,3,4 (as you see them) to 4,3,2,1.  To do this, you need to both `FIND` some things and `REPLACE` them (AKA "re-arrange" them, but you also do that in the `REPLACE` box).  Enter the expression for each operation in the correct position, below:
 
   **FIND**:
   ```
@@ -141,7 +143,7 @@ spider,8,0,0
   ```
 
 
-4. Your boss still hates comma-separated value (CSV) files.  For whatever reason (bosses make no sense), they want the first two columns separated by the pipe character (`|`), the 2nd and 3rd columns separated by tabs, and the 3rd and 4th columns separated by colons.  Make that happen.
+4. Your boss still hates comma-separated value (CSV) files.  For whatever reason (bosses often ask for odd things), they want the first two columns separated by the pipe character "`|`", the 2nd and 3rd columns separated by tabs, and the 3rd and 4th columns separated by colons.  Make that happen.
 
   **FIND**:
   ```
@@ -155,7 +157,7 @@ spider,8,0,0
 
 ## Task Group 3
 
-Here is a typical fastq-formatted header from an Illumina sequencer (this is a real header form a real sequencing run - no fake stuff here).  There's lots of info in these header strings, and you need to parse some of that information out of the header string (which always starts with `@` for fastq data versus `>` for fasta data):
+Here is a typical fastq-formatted header from an Illumina sequencer (this is a real header form a real sequencing run).  There's lots of info in these header strings, and you need to parse some of that information out of the header string (which always starts with `@` for fastq data versus `>` for fasta data):
 
 ```
 @SN1083:466:HA8VPADXX:1:1101:1997:2233 1:N:0:89
@@ -163,7 +165,7 @@ Here is a typical fastq-formatted header from an Illumina sequencer (this is a r
 
 ### Tasks
 
-1. The read number is the first integer value that you see **following the space** in the header.  How would you parse out **only** the lane number from the header above?
+1. The read number is the first integer value that you see **following the space** in the header.  How would you parse out **only the lane number** from the header above?
 
   **FIND**:
   ```
@@ -175,7 +177,7 @@ Here is a typical fastq-formatted header from an Illumina sequencer (this is a r
 
   ```
 
-1. The flowcell serial number is the 3rd set of characters that looks like `HA8VPADXX`.  How would you parse out **only** the flowcell from the header above?
+1. The flowcell serial number is the 3rd set of characters that looks like `HA8VPADXX`.  How would you parse out **only the flowcell** from the header above?
 
   **FIND**:
   ```
@@ -187,7 +189,7 @@ Here is a typical fastq-formatted header from an Illumina sequencer (this is a r
 
   ```
 
-1. Now, assume that the flowcell serial number stays in the same position (the third "column" of information separated by colons) but also assume that the flowcell value can take on different values. How would you parse out **only** the flowcell from the header above?
+1. Now, assume that the flowcell serial number stays in the same position (the third "column" of information separated by colons) but also assume that the flowcell value can take on different values. How would you parse out **only the flowcell** from the header above?
 
   **FIND**:
   ```
@@ -201,7 +203,7 @@ Here is a typical fastq-formatted header from an Illumina sequencer (this is a r
 
 ## Task Group 4
 
-Here is the same header, but this time with all of the associated sequence and quality data.  This is a fully-qualified fastq sequence (again, from an actual run - these data are from a bird):
+Here is the same header, but this time with all of the associated sequence and quality data (I have truncated it - it was PE150).  This is a fully-qualified fastq sequence (again, from an actual run - these data are from a bird):
 
 ```
 @SN1083:466:HA8VPADXX:1:1101:1997:2233 1:N:0:89
@@ -210,8 +212,9 @@ AGGGTGAAGGTGGCGCAGAATGAGCTGGGACAGCAGATCCTAGCTGACTTCGAGGAAGCCT
 <BB<FFFFFF0BFFFIBBFFFFIFFIIIIIIIIFIIIFFFIIIFBBFFIIFIFFFFFFFFF
 ```
 
+### Tasks
 
-1. This one is pretty hard because you are dealing with multiple lines now. The serial number of the Illumina sequencer is the first set of numbers after the `@` and before the first colon, how would you extract **only** the serial number from the sequence data? Assume that the characters may not stay the same.
+1. This one is pretty hard because you are dealing with multiple lines now. The serial number of the Illumina sequencer is the first set of numbers after the `@` and before the first colon. How would you extract **only the serial number** from the sequence data? Assume that the characters may not stay the same.
 
   **FIND**:
   ```
@@ -242,7 +245,7 @@ AGGGTGAAGGTGGCGCAGAATGAGCTGGGACAGCAGATCCTAGCTGACTTCGAGGAAGCCT
 
 ## Task Group 5
 
-This one is actually really hard for a somewhat strange reason and does not count.  But, see if you can do it - I actually tried it for quite some time before getting it correct.  Return to our microsatellite repeat:
+This one is actually really hard for a somewhat strange reason and **does not count**.  But, see if you can do it - I actually tried it for quite some time before getting it correct.  Return to our microsatellite repeat:
 
 ```
 ACGRRGCGAGCGAGSGAGCGCTATATATATATGCRGCTSGCTGTG
@@ -264,4 +267,6 @@ ACGRRGCGAGCGAGSGAGCGCTATATATATATGCRGCTSGCTGTG
 
 You are finished.  You are probably also happy and/or angry or even, possibly, both.  The regex pain is complete for the time being.  Next time, we'll be doing this in [Python](http://python.org).
 
-Know that regular expressions are pretty hard for everyone. With some practice (and more practice), you start to get used to how the patterns work and how they work, in particular, with your programming language or text-editor of choice. One you have a little time to get a bit [Zen](https://www.youtube.com/watch?v=Q6-DmV4dhek) about regular expressions, you may even start to like them.  Then again, maybe not.
+Know that regular expressions are pretty hard for everyone. With some practice (and more practice), you start to get used to how the patterns work, generally, and also how they work, particularly, with your programming language or text-editor of choice. One you have a little time to get a bit [Zen](https://www.youtube.com/watch?v=Q6-DmV4dhek) about regular expressions, you may even start to like them.  
+
+Then again, maybe not.
