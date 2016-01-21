@@ -101,7 +101,7 @@ dog,4,4,4
 spider,8,0,0
 ```
 
-**Note**: I am working under the assumption that spiders do not have toes.
+**Note**: I am working under the assumption that dogs do have fingers but spiders do not have fingers or toes.
 
 ### Tasks
 
