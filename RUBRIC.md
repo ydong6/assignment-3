@@ -6,7 +6,7 @@
 - [ ] Regex matches entire dinucleotide repeat (AT)5, only the repeat, and is different from above (1 pt)
 - [ ] Regex matches entire dinucleotide repeat (AT)5, only the repeat, and is different both above (1 pt)
 - [ ] Regex correctly matches all instances of `R` or `S` (1 pt)
-- [ ] Regex (find and replace) matches all instances of `R` or S and replaces them with `N` (1 pt)
+- [ ] Regex (find and replace) matches all instances of `R` or `S` and replaces them with `N` (1 pt)
 
 ## Task Set 2
 
