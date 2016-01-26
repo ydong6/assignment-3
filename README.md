@@ -53,40 +53,40 @@ ACGRRGCGAGCGAGSGAGCGCTATATATATATGCRGCTSGCTGTG
 1. What regular expression matches only the entire dinucleotide repeat (AT)5?  Enter your answer in the triple quotes directly below:
 
   **FIND**:
-  ```
+  ```(ATATATATAT)
 
   ```
 
 2. What is one alternative way to find this same sequence? Enter your answer in the triple quotes directly below:
 
   **FIND**:
-  ```
+  ```(AT){5}
 
   ```
 
 3. What is one more alternative way to find this same sequence? Enter your answer in the triple quotes below:
 
   **FIND**:
-  ```
+  ```(AT){1,5}
 
   ```
 
 4. How would you find all instances of `R` **or** `S` (degenerate base codes) in the same DNA sequence, above? Enter your answer in the triple quotes below:
 
   **FIND**:
-  ```
+  ```[^C,G,A,T]
 
   ```
 
 4. How would you find all instances of `R` **or** `S` (degenerate base codes) in the same DNA sequence, above, and **replace** them with the ambiguous base code `N`.  Place the search string in the `FIND` section below, and the replacement string in the `REPLACE` section below:
 
   **FIND**:
-  ```
+  ```[^C,G,A,T]
 
   ```
 
   **REPLACE**:
-  ```
+  ```N
 
   ```
 
@@ -108,24 +108,24 @@ spider,8,0,0
 1. Reverse the order of the columns from 1,2,3,4 (as you see them) to 4,3,2,1.  To do this, you need to both `FIND` some things and `REPLACE` them (AKA "re-arrange" them, but you also do that in the `REPLACE` box).  Enter the expression for each operation in the correct position, below:
 
   **FIND**:
-  ```
+  ```(.*),(.*),(.*),(.*)
 
   ```
 
   **REPLACE**:
-  ```
+  ```$4,$3,$2,$1
 
   ```
 
 2. You realize that only the last two columns of data are in the wrong order (3,4).  You want to reverse the order of only the last two columns (4,3).  How do you do that?
 
   **FIND**:
-  ```
+  ```(.*),(.*),(.*),(.*)
 
   ```
 
   **REPLACE**:
-  ```
+  ```$1,$2,$4,$3
 
   ```
 
@@ -133,12 +133,12 @@ spider,8,0,0
 3. Your boss hates comma-separated value (CSV) files and really loves tab separated value files (no one is sure why, because we all know that CSV is the penultimate format for data of this sort). Replace the commas in the CSV text with tabs.
 
   **FIND**:
-  ```
+  ```(,)
 
   ```
 
   **REPLACE**:
-  ```
+  ```\t
 
   ```
 
@@ -146,14 +146,15 @@ spider,8,0,0
 4. Your boss still hates comma-separated value (CSV) files.  For whatever reason (bosses often ask for odd things), they want the first two columns separated by the pipe character "`|`", the 2nd and 3rd columns separated by tabs, and the 3rd and 4th columns separated by colons.  Make that happen.
 
   **FIND**:
-  ```
+  ```(,)
 
   ```
 
   **REPLACE**:
-  ```
+  ```|
+  ```\t
+  ```:
 
-  ```
 
 ## Task Group 3
 
@@ -168,36 +169,36 @@ Here is a typical fastq-formatted header from an Illumina sequencer (this is a r
 1. The read number is the first integer value that you see **following the space** in the header.  How would you parse out **only the read number** from the header above?
 
   **FIND**:
-  ```
+  ```^@\w+:\d+:(\w+):\d+:\d+:\d+:\d+\s(\d):.*
 
   ```
 
   **REPLACE**:
-  ```
+  ```$2
 
   ```
 
 1. The flowcell serial number is the 3rd set of characters that looks like `HA8VPADXX`.  How would you parse out **only the flowcell** from the header above?
 
   **FIND**:
-  ```
+  ```^@\w+:\d+:(\w+):\d+:\d+:\d+:\d+\s(\d):.*
 
   ```
 
   **REPLACE**:
-  ```
+  ```$1
 
   ```
 
 1. Now, assume that the flowcell serial number stays in the same position (the third "column" of information separated by colons) but also assume that the flowcell value can take on different values. How would you parse out **only the flowcell** from the header above?
 
   **FIND**:
-  ```
+  ```^@\w+:\d+:(\w+):\d+:\d+:\d+:\d+\s(\d):.*
 
   ```
 
   **REPLACE**:
-  ```
+  ```$1
 
   ```
 
@@ -217,12 +218,12 @@ AGGGTGAAGGTGGCGCAGAATGAGCTGGGACAGCAGATCCTAGCTGACTTCGAGGAAGCCT
 1. This one is pretty hard because you are dealing with multiple lines now. The serial number of the Illumina sequencer is the first set of numbers after the `@` and before the first colon. How would you extract **only the serial number** from the sequence data? Assume that the characters may not stay the same.
 
   **FIND**:
-  ```
+  ```(.*)
 
   ```
 
   **REPLACE**:
-  ```
+  ```SN1083
 
   ```
 
